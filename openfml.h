@@ -13,7 +13,7 @@ static inline float rsqrt(int x) {
      float mantissa = frexp(x, &exponent);
      return sqrt(1/mantissa) / pow(2, exponent/2);
 }     
-static inline float sqrt(int x) {
+static inline float fast_sqrt(int x) {
    return 1/rsqrt(x);
  }  
     
