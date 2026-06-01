@@ -16,4 +16,6 @@ static inline float rsqrt(int x) {
 static inline float fast_sqrt(int x) {
    return 1/rsqrt(x);
  }  
-    
+static inline float atanh(int x) {
+ return fast_log((1 + x)/(1 - x))/2;
+} 
