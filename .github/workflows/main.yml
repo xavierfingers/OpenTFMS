@@ -1,0 +1,33 @@
+name: Generate AI Project Description
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'README.md'
+      - 'src/**'
+
+jobs:
+  describe_project:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Needed to commit the changes back to your repo
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Generate Description with GitHub Models AI
+        uses: marocchino/sticky-pull-request-comment@v2 # Or use an API request to github-models
+        # Alternatively, you can write a short bash script utilizing curl to hit the AI API of your choice
+        # using the ${{ secrets.GITHUB_TOKEN }} or a specific AI provider API key.
+
+      - name: Commit AI Generated Description
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          # Add a script here to save the generated description to your `docs/overview.md` or similar
+          git add docs/overview.md
+          git commit -m "Update AI-generated project description" || exit 0
+          git push
