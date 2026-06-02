@@ -1,0 +1,3 @@
+This is an experimental math library focused on portability, efficiency & speed/performance.
+
+Use the functions (more later): fast_log, sqrt rsqrt atanh.
