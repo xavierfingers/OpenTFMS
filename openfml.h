@@ -19,3 +19,6 @@ static inline float fast_sqrt(int x) {
 static inline float atanh(int x) {
  return fast_log((1 + x)/(1 - x))/2;
 } 
+static inline int exp(int x, int n) {
+ return pow(x, floor(fast_log(x)/fast_log(2)));
+} 
