@@ -14,7 +14,7 @@ static inline float fml_rsqrt(int x) {
      return sqrt(1/mantissa) / pow(2, exponent/2);
 }     
 static inline float fml_fast_sqrt(int x) {
-   return 1/rsqrt(x);
+   return 1/fml_rsqrt(x);
  }  
 static inline float fml_atanh(int x) {
  return fast_log((1 + x)/(1 - x))/2;
